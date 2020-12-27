@@ -33,20 +33,20 @@ int sum (int n, ...)
 	return result;
 }
 
-int	main (int argc, char *argv[])
-{
-	printf("%d \n", sum(4, 1, 2, 3, 4));
-	printf("%d \n", sum(5, 12, 21, 13, 4, 5));
-	if (argc == 2)
-	{
-		printf("The argument supplied is %s\n", argv[1]);
-	}
-	else if (argc > 2)
-	{
-		printf("Too many arguments supplied.\n");
-	}
-	else
-	{
-		printf("One argument expected.\n");
-	}
-}
+//int	main (int argc, char *argv[])
+//{
+//	printf("%d \n", sum(4, 1, 2, 3, 4));
+//	printf("%d \n", sum(5, 12, 21, 13, 4, 5));
+//	if (argc == 2)
+//	{
+//		printf("The argument supplied is %s\n", argv[1]);
+//	}
+//	else if (argc > 2)
+//	{
+//		printf("Too many arguments supplied.\n");
+//	}
+//	else
+//	{
+//		printf("One argument expected.\n");
+//	}
+//}
