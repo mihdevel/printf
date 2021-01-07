@@ -3,15 +3,18 @@
 int	main()
 {
 
-	printf("%s%s%s\n\n", "qw", "er", "ty");
-	ft_printf("%s%s%s\n\n", "qw", "er", "ty");
+//	printf("%-10.9s\n", "12345678901");
+	ft_printf("qw%-0*.*sqw", "afavvvv");
+
+//	printf("%*.*s%s%s\n\n", 6, 8, "qw", "er", "ty");
+//	ft_printf("%s%s%s\n\n", "qw", "er", "ty");
 
 //	printf("%-*hhd\n", 50, (unsigned char)15000000);
 //	ft_printf("%-*hhd", 50, (unsigned  char)15000000);
 
 //	ft_printf("%d\n\n", 13);
 //	ft_printf("%d\n\n", 13);
-
+//
 //	printf("%x\n", 13);
 //	ft_printf("%x\n\n", 13);
 //

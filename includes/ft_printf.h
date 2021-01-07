@@ -12,23 +12,31 @@
 
 #ifndef PRINTF_FT_PRINTF_H
 # define PRINTF_FT_PRINTF_H
+# define FLAGS		"+-0# "
+# define SPECIFICATORS	"discpuxX%"
 
-# include <stdio.h>
-# include <stdlib.h>
+# include <stdio.h> // отключить
+# include <stdlib.h> // отключить может быть
 # include <stdarg.h>
 # include <unistd.h>
 # include "../libft/libft.h"
 
 typedef struct		s_attr
 {
-	int				flags;
+	int				noll;
+	int				minus;
 	int				width;
 	int				precision;
 	char			type;
 }					t_attr;
 
 int					ft_printf(const char *format, ...);
-void				ft_parser(t_attr *attr, char **format, va_list factor);
-int					ft_printer(t_attr *attr, char **format, va_list factor);
+int					ft_parser(t_attr *struc_attr, char *format, va_list argptr);
+int					ft_printer(t_attr *attr, char **format, va_list argptr);
+void				init_struct(t_attr *attr);
+
+int					ft_get_width(char **format, va_list attr);
+char				*ft_get_next_argument_char(va_list argptr);
+int					ft_get_next_argument_int(va_list argptr);
 
 #endif

@@ -27,13 +27,15 @@ void 	print(t_attr *box)
 	print2(box);
 }
 
-//int 	main(void)
-//{
-//	t_attr	box;
-//	box.data = "qwerty";
-//	box.width = 12;
-//	print(&box);
-//
-//	return (0);
-//}
+int 	main(void)
+{
+	t_attr	box;
+	box.data = "qwerty";
+	box.width = 12;
+	print(&box);
+//	printf("Da = %s\n", box.w2.da);
+//	printf("Wi = %d\n", box.w2.wi);
+
+	return (0);
+}
 
