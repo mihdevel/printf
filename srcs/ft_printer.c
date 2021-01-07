@@ -6,13 +6,13 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:26 by meunostu          #+#    #+#             */
-/*   Updated: 2020/12/27 13:13:27 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/07 22:36:49 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_printer(t_attr *attr, char **format, va_list factor)
+int			ft_printer(t_attr *attr, char **format, va_list factor)
 {
 	return (0);
 }
