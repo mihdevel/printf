@@ -4,7 +4,8 @@ int	main()
 {
 
 //	printf("%-10.9s\n", "12345678901");
-	ft_printf("qw%-0*.*sqw", "afavvvv");
+	ft_printf("qw%-0sqw", 20, 30, "afavvvv");
+//	ft_printf("qw%-zzs", "afavvvv");
 
 //	printf("%*.*s%s%s\n\n", 6, 8, "qw", "er", "ty");
 //	ft_printf("%s%s%s\n\n", "qw", "er", "ty");

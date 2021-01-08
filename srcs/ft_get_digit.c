@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_get_digit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/27 13:08:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/08 13:17:02 by meunostu         ###   ########.fr       */
+/*   Created: 2020/12/28 11:36:51 by meunostu          #+#    #+#             */
+/*   Updated: 2021/01/08 13:27:04 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+int			ft_get_digit(char *format, va_list argptr)
 {
-	t_attr		struc_attr;
-	va_list		argptr;
-	int			count;
-	int			i;
+	int		res;
+	char	*start;
+	char	*digit;
+	int		len;
 
-	count = 0;
-	va_start(argptr, format);
-	while (*format != '\0')
-	{
-		if (*format == '%')
-		{
-			format++;
-			i = ft_parser(&struc_attr, (char *)format, argptr);
-			count += ft_printer(&struc_attr, &format, argptr);
-			format = format + i;
-		}
-		else
-		{
-			write(1, format, 1);
-			count++;
-		}
+	start = format;
+	if (*format == '*')
+		return (ft_get_next_argument_int(argptr));
+	format++;
+	while (ft_isdigit(*format))
 		format++;
+	len = format - start;
+	if (len == 0)
+		return (0);
+	else
+	{
+		digit = ft_substr(start, 0, len);
+		res = ft_atoi(digit);
+		free(digit);
+		return (res);
 	}
-	va_end(argptr);
-	return (count);
 }
