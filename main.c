@@ -3,8 +3,8 @@
 int	main()
 {
 
-//	printf("%-10.9s\n", "12345678901");
-	ft_printf("qw%-0sqw", 20, 30, "afavvvv");
+//	printf("|%-.s|", 10, 20, "Hello");
+	ft_printf("|%-.0s|", "Hello");
 //	ft_printf("qw%-zzs", "afavvvv");
 
 //	printf("%*.*s%s%s\n\n", 6, 8, "qw", "er", "ty");

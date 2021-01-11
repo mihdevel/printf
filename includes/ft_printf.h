@@ -38,5 +38,6 @@ int					ft_get_width(char *format, t_attr *struc_attr, va_list argptr);
 int					ft_get_digit(char *format, va_list attr);
 char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
+int					ft_print_s(t_attr *attr, va_list argptr);
 
 #endif
