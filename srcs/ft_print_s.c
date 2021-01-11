@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 21:44:55 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/11 17:56:44 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/11 18:14:18 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,25 @@ static int		ft_get_addition_len(t_attr *struc_attr, int len)
 		return (struc_attr->width - struc_attr->precision);
 }
 
-static void		ft_print_spaces_or_nulls(char c, int len)
+static int		ft_print_spaces_or_nulls(char c, int len)
 {
+	int		count;
+
+	count = len;
 	while (len-- > 0)
 		ft_putchar(c);
+	return (count);
 }
 
 int				ft_print_s(t_attr *struc_attr, va_list argptr)
 {
 	char		*str;
 	int			len;
-	int			i;
 	char		addition_char;
 	int			addition_len;
+	int			count;
 
-	i = 0;
+	count = 0;
 	addition_len = 0;
 	str = ft_get_next_argument_char(argptr);
 	len = ft_strlen(str);
@@ -55,14 +59,13 @@ int				ft_print_s(t_attr *struc_attr, va_list argptr)
 		addition_len = len < struc_attr->precision ? struc_attr->width - len :
 				struc_attr->width - struc_attr->precision;
 	if (struc_attr->minus == 0)
-		ft_print_spaces_or_nulls(addition_char, addition_len);
+		count += ft_print_spaces_or_nulls(addition_char, addition_len);
 	while (struc_attr->precision > 0)
 	{
-		ft_putchar(str[i]);
+		count += ft_putchar(*(str)++);
 		struc_attr->precision--;
-		i++;
 	}
 	if (struc_attr->minus == 1)
-		ft_print_spaces_or_nulls(addition_char, addition_len);
-	return (0);
+		count += ft_print_spaces_or_nulls(addition_char, addition_len);
+	return (count);
 }

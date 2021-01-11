@@ -31,10 +31,7 @@ int				ft_printf(const char *format, ...)
 			format = format + i;
 		}
 		else
-		{
-			write(1, format, 1);
-			count++;
-		}
+			count += ft_putchar(*format);
 		format++;
 	}
 	va_end(argptr);

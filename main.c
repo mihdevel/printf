@@ -2,9 +2,13 @@
 
 int	main()
 {
-	char *str = "|%1.1s|\n";
-	printf(str, "Hello");
-	ft_printf(str, "Hello");
+	int		i;
+	char *str = "|%010.6s|\n";
+	i = printf(str, "Hello");
+	printf("i - %d\n", i);
+	i = ft_printf(str, "Hello");
+	printf("i - %d", i);
+
 //	ft_printf("qw%-zzs", "afavvvv");
 
 //	printf("%*.*s%s%s\n\n", 6, 8, "qw", "er", "ty");
