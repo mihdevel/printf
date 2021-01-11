@@ -3,10 +3,10 @@
 int	main()
 {
 	int		i;
-	char *str = "|%010s|";
-	i = printf(str, "Hello");
+	char *str = "|%*s|";
+	i = printf(str, -10, "Hello");
 	printf("i - %d\n", i);
-	i = ft_printf(str, "Hello");
+	i = ft_printf(str, -10, "Hello");
 	printf("i - %d", i);
 
 //	ft_printf("qw%-zzs", "afavvvv");
