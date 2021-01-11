@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int			ft_printer(t_attr *attr, const char **format, va_list argptr)
+int			ft_printer(t_attr *attr, va_list argptr)
 {
 	int		len;
 	

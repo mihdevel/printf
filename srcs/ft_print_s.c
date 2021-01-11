@@ -12,24 +12,24 @@
 
 #include "../includes/ft_printf.h"
 
-static char		ft_get_addition_char(t_attr *struc_attr, int len)
+static char		ft_get_addition_char(t_attr *attr, int len)
 {
-	if (struc_attr->precision == -1)
-		struc_attr->precision = len;
-	if (struc_attr->minus == 1 || (!struc_attr->minus && !struc_attr->zero))
+	if (attr->precision == -1 || attr->precision > len)
+		attr->precision = len;
+	if (attr->minus == 1 || (!attr->minus && !attr->zero))
 		return (' ');
-	else if (struc_attr->zero == 1)
+	else if (attr->zero == 1)
 		return ('0');
 	else
 		return (' ');
 }
 
-static int		ft_get_addition_len(t_attr *struc_attr, int len)
+static int		ft_get_addition_len(t_attr *attr, int len)
 {
-	if (len < struc_attr->precision)
-		return (struc_attr->width - len);
+	if (len < attr->precision)
+		return (attr->width - len);
 	else
-		return (struc_attr->width - struc_attr->precision);
+		return (attr->width - attr->precision);
 }
 
 static int		ft_print_spaces_or_nulls(char c, int len)
@@ -42,7 +42,7 @@ static int		ft_print_spaces_or_nulls(char c, int len)
 	return (count);
 }
 
-int				ft_print_s(t_attr *struc_attr, va_list argptr)
+int				ft_print_s(t_attr *attr, va_list argptr)
 {
 	char		*str;
 	int			len;
@@ -54,18 +54,18 @@ int				ft_print_s(t_attr *struc_attr, va_list argptr)
 	addition_len = 0;
 	str = ft_get_next_argument_char(argptr);
 	len = ft_strlen(str);
-	addition_char = ft_get_addition_char(struc_attr, len);
-	if (struc_attr->width > struc_attr->precision)
-		addition_len = len < struc_attr->precision ? struc_attr->width - len :
-				struc_attr->width - struc_attr->precision;
-	if (struc_attr->minus == 0)
+	addition_char = ft_get_addition_char(attr, len);
+	if (attr->width > attr->precision)
+		addition_len = len < attr->precision ? attr->width - len :
+					   attr->width - attr->precision;
+	if (attr->minus == 0)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
-	while (struc_attr->precision > 0)
+	while (attr->precision > 0)
 	{
 		count += ft_putchar(*(str)++);
-		struc_attr->precision--;
+		attr->precision--;
 	}
-	if (struc_attr->minus == 1)
+	if (attr->minus == 1)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
 	return (count);
 }

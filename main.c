@@ -3,7 +3,7 @@
 int	main()
 {
 	int		i;
-	char *str = "|%010.6s|\n";
+	char *str = "|%010s|";
 	i = printf(str, "Hello");
 	printf("i - %d\n", i);
 	i = ft_printf(str, "Hello");
