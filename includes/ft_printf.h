@@ -6,19 +6,17 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:09:01 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/08 14:44:28 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/11 11:33:56 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_FT_PRINTF_H
-# define PRINTF_FT_PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # define FLAGS		"+-0# "
 # define SPECIFICATORS	"discpuxX%"
 
 # include <stdio.h> // отключить
-# include <stdlib.h> // отключить может быть
 # include <stdarg.h>
-# include <unistd.h>
 # include "../libft/libft.h"
 
 typedef struct		s_attr
@@ -38,6 +36,6 @@ int					ft_get_width(char *format, t_attr *struc_attr, va_list argptr);
 int					ft_get_digit(char *format, va_list attr);
 char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
-int					ft_print_s(t_attr *attr, va_list argptr);
+int					ft_print_s(t_attr *struc_attr, va_list argptr);
 
 #endif
