@@ -10,27 +10,31 @@ int	main()
 	int		num = 32;
 
 	printf("i - %d\n", printf(format, width, precision, str));
-	printf("i - %d\n", ft_printf(format, width, precision, str));
+	printf("i - %d\n\n", ft_printf(format, width, precision, str));
 
-	format = "|%-*.*s|";
+	format = "|%-0*.*s|";
 	printf("i - %d\n", printf(format, width, precision, str));
-	printf("i - %d\n", ft_printf(format, width, precision, str));
+	printf("i - %d\n\n", ft_printf(format, width, precision, str));
+
+	format = "|%0*.*s|";
+	printf("i - %d\n", printf(format, width, precision, str));
+	printf("i - %d\n\n", ft_printf(format, width, precision, str));
 
 	format = "|%-*s|";
-	printf("i - %d\n", printf("|%-*s|", width, str));
-	printf("i - %d\n", ft_printf(format, width, str));
+	printf("i - %d\n", printf(format, width, str));
+	printf("i - %d\n\n", ft_printf(format, width, str));
 
 	format = "|%*s|";
 	printf("i - %d\n", printf(format, width, str));
-	printf("i - %d\n", ft_printf(format, width, str));
+	printf("i - %d\n\n", ft_printf(format, width, str));
 
-	format = "|%.*s|";
-	printf("i - %d\n", printf(format, precision, str));
-	printf("i - %d\n", ft_printf(format, precision, str));
+//	format = "|%.*s|";
+//	printf("i - %d\n", printf(format, precision, str));
+//	printf("i - %d\n\n", ft_printf(format, precision, str));
 
-	format = "|%.*s|";
-	printf("i - %d\n", printf(format, -precision, str));
-	printf("i - %d\n", ft_printf(format, -precision, str));
+//	format = "|%.*s|";
+//	printf("i - %d\n", printf(format, -precision, str));
+//	printf("i - %d\n\n", ft_printf(format, -precision, str));
 
 	format = "|%s|";
 	printf("i - %d\n", printf(format, str));
