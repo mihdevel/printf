@@ -20,7 +20,7 @@ int			ft_printer(t_attr *attr, va_list argptr)
 	if (attr->type == 0)
 		return (-1);
 	else if (ft_strchr("diuxX", attr->type))
-		len = 1; //ft_ifdigit(attr, arg);
+		len = ft_print_d(attr, argptr); //ft_ifdigit(attr, arg);
 	else if (attr->type == 's')
 		len = ft_print_s(attr, argptr);
 	else if (attr->type == 'c')
