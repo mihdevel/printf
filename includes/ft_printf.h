@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:09:01 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/11 18:01:10 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/12 11:54:19 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int					ft_get_digit(char *format, va_list attr);
 char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
 int					ft_print_s(t_attr *attr, va_list argptr);
+int					ft_print_c(t_attr *attr, va_list argptr);
 
 #endif
