@@ -3,11 +3,40 @@
 int	main()
 {
 	int		i;
-	char *str = "|%*.0s|";
-	i = printf(str, 10, "Hello");
-	printf("i - %d\n", i);
-	i = ft_printf(str, 10, "Hello");
-	printf("i - %d", i);
+	char 	*format = "|%-0*.*s|";
+	int		width = 10;
+	int		precision = 2;
+	char	*str = "Hello";
+	int		num = 32;
+
+	printf("i - %d\n", printf(format, width, precision, str));
+	printf("i - %d\n", ft_printf(format, width, precision, str));
+
+	format = "|%-*.*s|";
+	printf("i - %d\n", printf(format, width, precision, str));
+	printf("i - %d\n", ft_printf(format, width, precision, str));
+
+	format = "|%-*s|";
+	printf("i - %d\n", printf("|%-*s|", width, str));
+	printf("i - %d\n", ft_printf(format, width, str));
+
+	format = "|%*s|";
+	printf("i - %d\n", printf(format, width, str));
+	printf("i - %d\n", ft_printf(format, width, str));
+
+	format = "|%.*s|";
+	printf("i - %d\n", printf(format, precision, str));
+	printf("i - %d\n", ft_printf(format, precision, str));
+
+	format = "|%.*s|";
+	printf("i - %d\n", printf(format, -precision, str));
+	printf("i - %d\n", ft_printf(format, -precision, str));
+
+	format = "|%s|";
+	printf("i - %d\n", printf(format, str));
+	printf("i - %d\n", ft_printf(format, str));
+
+
 
 //	ft_printf("qw%-zzs", "afavvvv");
 

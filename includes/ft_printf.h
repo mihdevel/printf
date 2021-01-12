@@ -38,5 +38,6 @@ char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
 int					ft_print_s(t_attr *attr, va_list argptr);
 int					ft_print_c(t_attr *attr, va_list argptr);
+int					ft_print_percent(t_attr *attr, va_list argptr);
 
 #endif

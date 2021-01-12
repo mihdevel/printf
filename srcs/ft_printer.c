@@ -28,6 +28,6 @@ int			ft_printer(t_attr *attr, va_list argptr)
 	else if (attr->type == 'p')
 		len = 1;
 	else if (attr->type == '%')
-		len = 1; //percent(attr);
+		len = ft_print_percent(attr, argptr);
 	return (len);
 }
