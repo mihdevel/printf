@@ -6,13 +6,13 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 11:31:41 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/12 11:54:19 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/17 11:09:33 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char		ft_get_addition_char(t_attr *attr, int len)
+static char		ft_get_addition_char(t_attr *attr)
 {
 	if (attr->minus == 1 || (!attr->minus && !attr->zero))
 		return (' ');
@@ -34,21 +34,20 @@ static int		ft_print_spaces_or_nulls(char c, int len)
 
 int				ft_print_c(t_attr *attr, va_list argptr)
 {
-	char		str;
-	int			len;
+	int		c;
 	char		addition_char;
 	int			addition_len;
 	int			count;
 
 	count = 0;
 	addition_len = 0;
-	str = va_arg(argptr, char);
-	addition_char = ft_get_addition_char(attr, len);
+	c = va_arg(argptr, int);
+	addition_char = ft_get_addition_char(attr);
 	if (attr->width > 1)
 		addition_len = attr->width - 1;
 	if (attr->minus == 0)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
-	count += ft_putchar(str);
+	count += ft_putchar(c);
 	if (attr->minus == 1)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
 	return (count);

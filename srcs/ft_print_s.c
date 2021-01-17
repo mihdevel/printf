@@ -24,13 +24,13 @@ static char		ft_get_addition_char(t_attr *attr, int len)
 		return (' ');
 }
 
-static int		ft_get_addition_len(t_attr *attr, int len)
-{
-	if (len < attr->precision)
-		return (attr->width - len);
-	else
-		return (attr->width - attr->precision);
-}
+//static int		ft_get_addition_len(t_attr *attr, int len)
+//{
+//	if (len < attr->precision)
+//		return (attr->width - len);
+//	else
+//		return (attr->width - attr->precision);
+//}
 
 static int		ft_print_spaces_or_nulls(char c, int len)
 {

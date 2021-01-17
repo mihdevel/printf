@@ -6,13 +6,13 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:02:58 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/12 15:03:52 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/17 11:35:40 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char		ft_get_addition_char(t_attr *attr, int len)
+static char		ft_get_addition_char(t_attr *attr)
 {
 	if (attr->minus == 1 || (!attr->minus && !attr->zero))
 		return (' ');
@@ -32,16 +32,15 @@ static int		ft_print_spaces_or_nulls(char c, int len)
 	return (count);
 }
 
-int				ft_print_percent(t_attr *attr, va_list argptr)
+int				ft_print_percent(t_attr *attr)
 {
-	int			len;
 	char		addition_char;
 	int			addition_len;
 	int			count;
 
 	count = 0;
 	addition_len = 0;
-	addition_char = ft_get_addition_char(attr, len);
+	addition_char = ft_get_addition_char(attr);
 	if (attr->width > 1)
 		addition_len = attr->width - 1;
 	if (attr->minus == 0)

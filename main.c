@@ -4,174 +4,174 @@ int	main()
 {
 	char 	*format;
 	int		width = 10;
-	int		precision = 2;
+	int		precision = 4;
 	char	*str = "Hello";
 	char	c = 'h';
 	int		nbr = 32;
 
 	printf("%s\n", "Specificator -  s");
 	format = "|%-0*.*s|";
-	printf("i - %d\n", printf(format, width, precision, str));
-	printf("i - %d\n\n", ft_printf(format, width, precision, str));
+	printf(" - %d\n", printf(format, width, precision, str));
+	printf(" - %d\n\n", ft_printf(format, width, precision, str));
 
 	format = "|%0*.*s|";
-	printf("i - %d\n", printf(format, width, precision, str));
-	printf("i - %d\n\n", ft_printf(format, width, precision, str));
+	printf(" - %d\n", printf(format, width, precision, str));
+	printf(" - %d\n\n", ft_printf(format, width, precision, str));
 
 	format = "|%*.*s|";
-	printf("i - %d\n", printf(format, width, precision, str));
-	printf("i - %d\n\n", ft_printf(format, width, precision, str));
+	printf(" - %d\n", printf(format, width, precision, str));
+	printf(" - %d\n\n", ft_printf(format, width, precision, str));
 
 	format = "|%*.s|";
-	printf("i - %d\n", printf(format, width, str));
-	printf("i - %d\n\n", ft_printf(format, width, str));
+	printf(" - %d\n", printf(format, width, str));
+	printf(" - %d\n\n", ft_printf(format, width, str));
 
 	format = "|%0*.0s|";
-	printf("i - %d\n", printf(format, width, str));
-	printf("i - %d\n\n", ft_printf(format, width, str));
+	printf(" - %d\n", printf(format, width, str));
+	printf(" - %d\n\n", ft_printf(format, width, str));
 
 	format = "|%-*s|";
-	printf("i - %d\n", printf(format, width, str));
-	printf("i - %d\n\n", ft_printf(format, width, str));
+	printf(" - %d\n", printf(format, width, str));
+	printf(" - %d\n\n", ft_printf(format, width, str));
 
 	format = "|%*s|";
-	printf("i - %d\n", printf(format, width, str));
-	printf("i - %d\n\n", ft_printf(format, width, str));
+	printf(" - %d\n", printf(format, width, str));
+	printf(" - %d\n\n", ft_printf(format, width, str));
 
 	format = "|%s|";
-	printf("i - %d\n", printf(format, str));
-	printf("i - %d\n\n", ft_printf(format, str));
+	printf(" - %d\n", printf(format, str));
+	printf(" - %d\n\n", ft_printf(format, str));
 
 //	format = "|%.*s|";
-//	printf("i - %d\n", printf(format, precision, str));
-//	printf("i - %d\n\n", ft_printf(format, precision, str));
+//	printf(" - %d\n", printf(format, precision, str));
+//	printf(" - %d\n\n", ft_printf(format, precision, str));
 
 //	format = "|%.*s|";
-//	printf("i - %d\n", printf(format, -precision, str));
-//	printf("i - %d\n\n", ft_printf(format, -precision, str));
+//	printf(" - %d\n", printf(format, -precision, str));
+//	printf(" - %d\n\n", ft_printf(format, -precision, str));
 
 	printf("%s\n", "Specificator -  c");
 	format = "|%-0*.*c|";
-	printf("i - %d\n", printf(format, width, precision, c));
-	printf("i - %d\n\n", ft_printf(format, width, precision, c));
+	printf(" - %d\n", printf(format, width, precision, c));
+	printf(" - %d\n\n", ft_printf(format, width, precision, c));
 
 	format = "|%0*.*c|";
-	printf("i - %d\n", printf(format, width, precision, c));
-	printf("i - %d\n\n", ft_printf(format, width, precision, c));
+	printf(" - %d\n", printf(format, width, precision, c));
+	printf(" - %d\n\n", ft_printf(format, width, precision, c));
 
 	format = "|%*.*c|";
-	printf("i - %d\n", printf(format, width, precision, c));
-	printf("i - %d\n\n", ft_printf(format, width, precision, c));
+	printf(" - %d\n", printf(format, width, precision, c));
+	printf(" - %d\n\n", ft_printf(format, width, precision, c));
 
 	format = "|%*.c|";
-	printf("i - %d\n", printf(format, width, c));
-	printf("i - %d\n\n", ft_printf(format, width, c));
+	printf(" - %d\n", printf(format, width, c));
+	printf(" - %d\n\n", ft_printf(format, width, c));
 
 	format = "|%0*.0c|";
-	printf("i - %d\n", printf(format, width, c));
-	printf("i - %d\n\n", ft_printf(format, width, c));
+	printf(" - %d\n", printf(format, width, c));
+	printf(" - %d\n\n", ft_printf(format, width, c));
 
 	format = "|%-*c|";
-	printf("i - %d\n", printf(format, width, c));
-	printf("i - %d\n\n", ft_printf(format, width, c));
+	printf(" - %d\n", printf(format, width, c));
+	printf(" - %d\n\n", ft_printf(format, width, c));
 
 	format = "|%*c|";
-	printf("i - %d\n", printf(format, width, c));
-	printf("i - %d\n\n", ft_printf(format, width, c));
+	printf(" - %d\n", printf(format, width, c));
+	printf(" - %d\n\n", ft_printf(format, width, c));
 
 	format = "|%c|";
-	printf("i - %d\n", printf(format, c));
-	printf("i - %d\n\n", ft_printf(format, c));
+	printf(" - %d\n", printf(format, c));
+	printf(" - %d\n\n", ft_printf(format, c));
 
 //	format = "|%.*c|";
-//	printf("i - %d\n", printf(format, precision, c));
-//	printf("i - %d\n\n", ft_printf(format, precision, c));
+//	printf(" - %d\n", printf(format, precision, c));
+//	printf(" - %d\n\n", ft_printf(format, precision, c));
 //
 //	format = "|%.*c|";
-//	printf("i - %d\n", printf(format, -precision, c));
-//	printf("i - %d\n\n", ft_printf(format, -precision, c));
+//	printf(" - %d\n", printf(format, -precision, c));
+//	printf(" - %d\n\n", ft_printf(format, -precision, c));
 
 	printf("%s\n", "Specificator -  %");
 	format = "|%-0*.*%|";
-	printf("i - %d\n", printf(format, width, precision));
-	printf("i - %d\n\n", ft_printf(format, width, precision));
+	printf(" - %d\n", printf(format, width, precision));
+	printf(" - %d\n\n", ft_printf(format, width, precision));
 
 	format = "|%0*.*%|";
-	printf("i - %d\n", printf(format, width, precision));
-	printf("i - %d\n\n", ft_printf(format, width, precision));
+	printf(" - %d\n", printf(format, width, precision));
+	printf(" - %d\n\n", ft_printf(format, width, precision));
 
 	format = "|%*.*%|";
-	printf("i - %d\n", printf(format, width, precision));
-	printf("i - %d\n\n", ft_printf(format, width, precision));
+	printf(" - %d\n", printf(format, width, precision));
+	printf(" - %d\n\n", ft_printf(format, width, precision));
 
 	format = "|%*.%|";
-	printf("i - %d\n", printf(format, width));
-	printf("i - %d\n\n", ft_printf(format, width));
+	printf(" - %d\n", printf(format, width));
+	printf(" - %d\n\n", ft_printf(format, width));
 
 	format = "|%0*.0%|";
-	printf("i - %d\n", printf(format, width));
-	printf("i - %d\n\n", ft_printf(format, width));
+	printf(" - %d\n", printf(format, width));
+	printf(" - %d\n\n", ft_printf(format, width));
 
 	format = "|%-*%|";
-	printf("i - %d\n", printf(format, width));
-	printf("i - %d\n\n", ft_printf(format, width));
+	printf(" - %d\n", printf(format, width));
+	printf(" - %d\n\n", ft_printf(format, width));
 
 	format = "|%*%|";
-	printf("i - %d\n", printf(format, width));
-	printf("i - %d\n\n", ft_printf(format, width));
+	printf(" - %d\n", printf(format, width));
+	printf(" - %d\n\n", ft_printf(format, width));
 
 	format = "|%%|";
-	printf("i - %d\n", printf(format, c));
-	printf("i - %d\n\n", ft_printf(format, c));
+	printf(" - %d\n", printf(format, c));
+	printf(" - %d\n\n", ft_printf(format, c));
 
 //	format = "|%.*%|";
-//	printf("i - %d\n", printf(format, precision));
-//	printf("i - %d\n\n", ft_printf(format, precision));
+//	printf(" - %d\n", printf(format, precision));
+//	printf(" - %d\n\n", ft_printf(format, precision));
 //
 //	format = "|%.*%|";
-//	printf("i - %d\n", printf(format, -precision));
-//	printf("i - %d\n\n", ft_printf(format, -precision));
+//	printf(" - %d\n", printf(format, -precision));
+//	printf(" - %d\n\n", ft_printf(format, -precision));
 
 	printf("%s\n", "Specificator -  d");
 	format = "|%-0*.*d|";
-	printf("i - %d\n", printf(format, width, precision, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, precision, nbr));
+	printf(" - %d\n", printf(format, width, precision, nbr));
+	printf(" - %d\n\n", ft_printf(format, width, precision, nbr));
 
 	format = "|%0*.*d|";
-	printf("i - %d\n", printf(format, width, precision, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, precision, nbr));
+	printf(" - %d\n", printf(format, width, precision, nbr));
+	printf(" - %d\n\n", ft_printf(format, width, precision, nbr));
 
 	format = "|%*.*d|";
-	printf("i - %d\n", printf(format, width, precision, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, precision, nbr));
+	printf(" - %d\n", printf(format, width, precision, nbr));
+	printf(" - %d\n\n", ft_printf(format, width, precision, nbr));
 
 	format = "|%*.d|";
-	printf("i - %d\n", printf(format, width, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, nbr));
+	printf(" - %d\n", printf(format, width, nbr));
+	printf(" - %d\n\n", ft_printf(format, width, nbr));
 
-	format = "|%0*.0s|";
-	printf("i - %d\n", printf(format, width, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, nbr));
-
-	format = "|%-*d|";
-	printf("i - %d\n", printf(format, width, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, nbr));
-
-	format = "|%*d|";
-	printf("i - %d\n", printf(format, width, nbr));
-	printf("i - %d\n\n", ft_printf(format, width, nbr));
-
-	format = "|%d|";
-	printf("i - %d\n", printf(format, nbr));
-	printf("i - %d\n\n", ft_printf(format, nbr));
-
-//	format = "|%.*d|";
-//	printf("i - %d\n", printf(format, precision, nbr));
-//	printf("i - %d\n\n", ft_printf(format, precision, nbr));
+//	format = "|%0*.0s|";
+//	printf(" - %d\n", printf(format, width, nbr));
+//	printf(" - %d\n\n", ft_printf(format, width, nbr));
+//
+//	format = "|%-*d|";
+//	printf(" - %d\n", printf(format, width, nbr));
+//	printf(" - %d\n\n", ft_printf(format, width, nbr));
+//
+//	format = "|%*d|";
+//	printf(" - %d\n", printf(format, width, nbr));
+//	printf(" - %d\n\n", ft_printf(format, width, nbr));
+//
+//	format = "|%d|";
+//	printf(" - %d\n", printf(format, nbr));
+//	printf(" - %d\n\n", ft_printf(format, nbr));
 
 //	format = "|%.*d|";
-//	printf("i - %d\n", printf(format, -precision, nbr));
-//	printf("i - %d\n\n", ft_printf(format, -precision, nbr));
+//	printf(" - %d\n", printf(format, precision, nbr));
+//	printf(" - %d\n\n", ft_printf(format, precision, nbr));
+
+//	format = "|%.*d|";
+//	printf(" - %d\n", printf(format, -precision, nbr));
+//	printf(" - %d\n\n", ft_printf(format, -precision, nbr));
 
 
 

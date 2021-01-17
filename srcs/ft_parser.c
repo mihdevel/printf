@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/11 09:52:20 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/17 11:03:52 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int				ft_parser(t_attr *struc_attr, char *format, va_list argptr)
 	int			i;
 
 	i = 0;
+	// Баг при width = 0 и "|%.2s|"
 	ft_init_struct(struc_attr);
 	while (!ft_strchr(SPECIFICATORS, format[i]))
 	{
@@ -32,7 +33,7 @@ int				ft_parser(t_attr *struc_attr, char *format, va_list argptr)
 			struc_attr->minus = 1;
 		if (format[i] == '0' && !ft_isdigit(format[i - 1]) && format[i - 1] != '.')
 			struc_attr->zero = 1;
-		if (format[i] == '*' || ft_isdigit(format[i]) && format[i - 1] != '.')
+		if (format[i] == '*' || (ft_isdigit(format[i]) && format[i - 1] != '.'))
 			struc_attr->width = ft_get_width(format + i, struc_attr, argptr);
 		if (format[i] == '.' && !ft_isdigit(format[i + 1]))
 			struc_attr->precision = 0;

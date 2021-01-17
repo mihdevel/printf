@@ -12,7 +12,6 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define FLAGS		"+-0# "
 # define SPECIFICATORS	"discpuxX%"
 
 # include <stdio.h> // отключить
@@ -31,14 +30,13 @@ typedef struct		s_attr
 int					ft_printf(const char *format, ...);
 int					ft_parser(t_attr *struc_attr, char *format, va_list argptr);
 int					ft_printer(t_attr *attr, va_list argptr);
-void				init_struct(t_attr *struc_attr);
 int					ft_get_width(char *format, t_attr *struc_attr, va_list argptr);
 int					ft_get_digit(char *format, va_list attr);
 char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
 int					ft_print_s(t_attr *attr, va_list argptr);
 int					ft_print_c(t_attr *attr, va_list argptr);
-int					ft_print_percent(t_attr *attr, va_list argptr);
+int					ft_print_percent(t_attr *attr);
 int					ft_print_d(t_attr *attr, va_list argptr);
 
 #endif
