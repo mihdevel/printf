@@ -33,7 +33,9 @@ SRC = ft_memcpy.c\
     ft_strncmp.c\
     ft_strtrim.c\
     ft_putendl_fd.c\
-    ft_memcmp.c
+    ft_memcmp.c\
+    ft_putchar.c\
+    ft_putstr.c
 
 OBJ = $(SRC:.c=.o)
 

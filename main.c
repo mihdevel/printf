@@ -7,7 +7,7 @@ int	main()
 	int		precision = 4;
 	char	*str = "Hello";
 	char	c = 'h';
-	int		nbr = 32;
+	int		nbr = -32;
 
 	printf("%s\n", "Specificator -  s");
 	format = "|%-0*.*s|";
@@ -149,9 +149,9 @@ int	main()
 	printf(" - %d\n", printf(format, width, nbr));
 	printf(" - %d\n\n", ft_printf(format, width, nbr));
 
-//	format = "|%0*.0s|";
-//	printf(" - %d\n", printf(format, width, nbr));
-//	printf(" - %d\n\n", ft_printf(format, width, nbr));
+	format = "|%0*.0d|";
+	printf(" - %d\n", printf(format, width, nbr));
+	printf(" - %d\n\n", ft_printf(format, width, nbr));
 //
 //	format = "|%-*d|";
 //	printf(" - %d\n", printf(format, width, nbr));

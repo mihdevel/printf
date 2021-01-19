@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 11:16:33 by meunostu          #+#    #+#             */
-/*   Updated: 2020/11/03 11:16:34 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/18 20:49:24 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char		*ft_strrchr(const char *s, int c)
 {
 	const char	*str;
 
-	str = s + ft_strlen(s) + §;
+	str = s + ft_strlen(s) + 1;
 	while (str-- >= s)
 		if (*str == c)
 			return ((char *)str);
