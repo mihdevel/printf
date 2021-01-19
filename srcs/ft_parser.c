@@ -25,7 +25,7 @@ int				ft_parser(t_attr *struc_attr, char *format, va_list argptr)
 	int			i;
 
 	i = 0;
-	// Баг при width = 0 и "|%.2s|"
+	// TODO Баг при width = 0 и "|%.2s|"
 	ft_init_struct(struc_attr);
 	while (!ft_strchr(SPECIFICATORS, format[i]))
 	{

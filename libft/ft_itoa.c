@@ -40,7 +40,7 @@ static	int		counter(int n)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(unsigned int n)
 {
 	int				n2;
 	int				len;
