@@ -3,7 +3,7 @@
 int	main()
 {
 	char 	*format;
-	int		width = 10;
+	int		width = 20;
 	int		precision = 4;
 	char	*str = "Hello";
 	char	c = 'h';

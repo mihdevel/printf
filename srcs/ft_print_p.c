@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/19 15:25:06 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/19 18:23:10 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,30 @@ static int		ft_print_spaces_or_nulls(char c, int len)
 
 int				ft_print_p(t_attr *attr, va_list argptr)
 {
-	unsigned int		nbr;
-	int					len;
-	char				addition_char;
-	int					addition_len;
-	int					count;
+	char		*str;
+	int			len;
+	char		addition_char;
+	int			addition_len;
+	int			count;
 
 	count = 0;
 	addition_len = 0;
-	nbr = va_arg(argptr, unsigned int );
-	len = ft_strlen(ft_itoa(nbr));
+	str = ft_itoa_base(va_arg(argptr, unsigned int), 16);
+	len = ft_strlen(str);
 	addition_char = ft_get_addition_char(attr, len);
 	if (attr->width > attr->precision)
 		addition_len = len < attr->precision ? attr->width - len :
 					   attr->width - attr->precision;
 	if (attr->minus == 0)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
+	count += ft_putstr("0x10");
 	while (attr->precision > 0)
 	{
-		count += ft_putchar(nbr);
+
+		count += ft_putchar(*(str)++);
 		attr->precision--;
 	}
+	count += ft_putstr("e0f");
 	if (attr->minus == 1)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
 	return (count);
