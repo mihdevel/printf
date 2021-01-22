@@ -19,7 +19,7 @@ int			ft_printer(t_attr *attr, va_list argptr)
 	len = 0;
 	if (attr->type == 0)
 		return (-1);
-	else if (ft_strchr("diuxX", attr->type))
+	else if (ft_strchr("diu", attr->type))
 		len = ft_print_d(attr, argptr);
 	else if (attr->type == 's')
 		len = ft_print_s(attr, argptr);
@@ -27,6 +27,8 @@ int			ft_printer(t_attr *attr, va_list argptr)
 		len = ft_print_c(attr, argptr);
 	else if (attr->type == 'p')
 		len = ft_print_p(attr, argptr);
+	else if (attr->type == 'x' || attr->type == 'X')
+		len = 1; // ft_print_x(attr, argptr);
 	else if (attr->type == '%')
 		len = ft_print_percent(attr);
 	return (len);

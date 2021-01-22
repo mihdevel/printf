@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 09:43:33 by meunostu          #+#    #+#             */
-/*   Updated: 2020/11/05 09:43:35 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/20 12:36:24 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static	int		counter(int n)
 	return (len);
 }
 
-char			*ft_itoa(unsigned int n)
+char			*ft_itoa(int n)
 {
 	int				n2;
 	int				len;

@@ -6,31 +6,13 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/18 14:06:55 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/22 16:23:26 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-//static char		ft_get_addition_char(t_attr *attr)
-//{
-//	if (attr->minus == 1 || (!attr->minus && !attr->zero))
-//		return (' ');
-//	else if (attr->zero == 1 && attr->precision)
-//		return ('0');
-//	else
-//		return (' ');
-//}
-
-//static int		ft_get_addition_len(t_attr *attr, int len)
-//{
-//	if (len < attr->precision)
-//		return (attr->width - len);
-//	else
-//		return (attr->width - attr->precision);
-//}
-
-static int		ft_print_spaces_or_nulls(char c, int len)
+static int		ft_print_chars(char c, int len)
 {
 	int		count;
 
@@ -40,52 +22,57 @@ static int		ft_print_spaces_or_nulls(char c, int len)
 	return (count);
 }
 
+static int		format_print_d(t_attr *attr, int zerro_len, int nbr, int minus)
+{
+	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
+		attr->space_len += 1;
+	if (attr->minus == 0)
+		ft_print_chars(' ', attr->space_len);
+	if (minus)
+		ft_print_chars('-', 1);
+	ft_print_chars('0', zerro_len);
+	if (attr->precision != 0)
+		ft_putnbr_fd(nbr, 1);
+	if (attr->minus == 1)
+		ft_print_chars(' ', attr->space_len);
+	return (0);
+}
+
+static int		zero(t_attr *attr, int len_nbr)
+{
+	int			zerro_len;
+
+	zerro_len = 0;
+	if (attr->precision > len_nbr)
+		zerro_len = attr->precision - len_nbr;
+	if (attr->zero && attr->precision == -1)
+		zerro_len = attr->width - len_nbr;
+	return (zerro_len);
+}
+
 int				ft_print_d(t_attr *attr, va_list argptr)
 {
 	int			nbr;
-	int			len;
-	char		addition_char;
-	int			addition_len;
-	int			count;
-	int 		zerro_len;
+	int			len_nbr;
+	int			zerro_len;
+	int			nbr_minus;
 
-	count = 0;
-	addition_len = 0;
-	zerro_len = 0;
-	addition_char = ' ';
+	attr->space_len = 0;
+	nbr_minus = 0;
 	nbr = ft_get_next_argument_int(argptr);
-	len = ft_strlen(ft_itoa(nbr));
-	if (nbr < 0)
-		len -= 1;
-	if (attr->width > attr->precision)
-		addition_len = len < attr->precision ? attr->width - len :
-					   attr->width - attr->precision;
-	if (attr->precision > len)
-	{
-		count += ft_print_spaces_or_nulls('0', attr->precision - len);
-		addition_len = (addition_len - (attr->precision - len));
-	}
-	if (attr->precision > len && attr->minus == 0)
-		zerro_len = attr->precision - len;
-	if (attr->zero && attr->width > len + zerro_len)
-		addition_char = '0';
+	len_nbr = ft_strlen(ft_itoa(nbr));
 	if (nbr < 0)
 	{
-		ft_putchar('-');
-		nbr *= -1;
+		nbr = -nbr;
+		len_nbr -= 1;
+		nbr_minus = 1;
 	}
-	if (attr->minus == 0)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len - zerro_len);
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		nbr *= -1;
-	}
-	if (attr->precision > len)
-		count += ft_print_spaces_or_nulls('0', zerro_len);
-	ft_putnbr_fd(nbr, 1);
-	count += len;
-	if (attr->minus == 1)
-		count += ft_print_spaces_or_nulls(' ', addition_len - zerro_len);
-	return (count);
+	zerro_len = zero(attr, len_nbr);
+	if (attr->width > len_nbr)
+		attr->space_len += attr->width - len_nbr - zerro_len;
+	if (nbr_minus && attr->zero && attr->precision == -1)
+		zerro_len -= 1;
+	else if (nbr_minus)
+		attr->space_len -= 1;
+	return (format_print_d(attr, zerro_len, nbr, nbr_minus));
 }

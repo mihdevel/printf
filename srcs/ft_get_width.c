@@ -33,7 +33,7 @@ int				ft_get_width(char *format, t_attr *struc_attr, va_list argptr)
 	char		*digit;
 	int			len;
 
-	if (struc_attr->width != 0 || format[0] == '0')
+	if (struc_attr->width != -1 || format[0] == '0')
 		return (struc_attr->width);
 	if (*format == '*')
 		return (ft_get_next_argument_with(struc_attr, argptr));

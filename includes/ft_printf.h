@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:09:01 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/12 11:54:19 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:26:37 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # define SPECIFICATORS	"discpuxX%"
 
-# include <stdio.h> // отключить
 # include <stdarg.h>
 # include "../libft/libft.h"
 
@@ -25,6 +24,7 @@ typedef struct		s_attr
 	int				width;
 	int				precision;
 	char			type;
+	int				space_len;
 }					t_attr;
 
 int					ft_printf(const char *format, ...);

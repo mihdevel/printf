@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/19 18:23:10 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/22 14:36:02 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 					   attr->width - attr->precision;
 	if (attr->minus == 0)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
-	count += ft_putstr("0x10");
+//	count += ft_putstr("0x10");
 	while (attr->precision > 0)
 	{
 
 		count += ft_putchar(*(str)++);
 		attr->precision--;
 	}
-	count += ft_putstr("e0f");
+//	count += ft_putstr("e0f");
 	if (attr->minus == 1)
 		count += ft_print_spaces_or_nulls(addition_char, addition_len);
 	return (count);
