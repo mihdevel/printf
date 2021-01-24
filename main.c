@@ -192,6 +192,10 @@ int	main()
 	printf(" - %d\n\n", ft_printf(format, 11));
 
 
+	printf(" - %d\n", printf("|%7u|", 33));
+	printf(" - %d\n\n", ft_printf("|%7u|", 33));
+
+
 //	printf("%s\n", "Specificator -  p");
 //	format = "|%-0*.*p|";
 //	printf(" - %d|%s\n", printf(format, width, precision, str), format);

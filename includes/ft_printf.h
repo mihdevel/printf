@@ -39,5 +39,6 @@ int					ft_print_c(t_attr *attr, va_list argptr);
 int					ft_print_percent(t_attr *attr);
 int					ft_print_d(t_attr *attr, va_list argptr);
 int					ft_print_p(t_attr *attr, va_list argptr);
+int					ft_print_u(t_attr *attr, va_list argptr);
 
 #endif
