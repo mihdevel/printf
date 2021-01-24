@@ -6,13 +6,13 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/24 14:39:26 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/24 14:40:06 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void			ft_putnbr_u(unsigned int nb)
+static void			 ft_putnbr_u(unsigned int nb)
 {
 	char			mass[10];
 	int				i;

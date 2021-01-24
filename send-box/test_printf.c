@@ -1,9 +1,8 @@
 #include <stdio.h>
-
+//gcc -Wall -Wextra -Werror test_printf.c
 int 	main(void)
 {
-	char *format = "|%*.*s|";
-	printf(format, 10, 3, "Hello");
+	printf("|%5.9-s|", "hi low");
 
 	return (0);
 }
