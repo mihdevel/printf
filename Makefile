@@ -3,7 +3,7 @@ SRC_DIR = srcs/
 SRC_FILES = ft_printf.c ft_parser.c ft_printer.c\
 			ft_get_width.c ft_get_digit.c\
 			ft_print_s.c ft_print_c.c ft_print_d.c\
-			ft_print_percent.c ft_print_p.c ft_print_u.c\
+			ft_print_percent.c ft_print_p.c ft_print_u.c ft_print_x.c\
 			ft_utils.c
 
 FLAGS = -Wall -Wextra -Werror -Iincludes/

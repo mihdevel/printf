@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:26 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/24 14:02:52 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/25 10:39:57 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_printer(t_attr *attr, va_list argptr)
 	else if (attr->type == 'p')
 		len = ft_print_p(attr, argptr);
 	else if (attr->type == 'x' || attr->type == 'X')
-		len = 1; // ft_print_x(attr, argptr);
+		len = ft_print_x(attr, argptr);
 	else if (attr->type == '%')
 		len = ft_print_percent(attr);
 	return (len);

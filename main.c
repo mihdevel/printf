@@ -310,8 +310,8 @@ int	main()
 //	printf("%0*d\n", 20, -1234567890);
 //	ft_printf("%0*d\n\n", 20, -1234567890);
 //
-	printf("%.*p", -3, "s_hello");
-	ft_printf("%.*p", -3, "s_hello");
+	printf("|%5.0x|\n", 0);
+	ft_printf("|%5.0x|\n", 0);
 
 
 
