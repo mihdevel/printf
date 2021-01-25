@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/22 16:23:26 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/25 12:10:49 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 
 	attr->space_len = 0;
 	nbr_minus = 0;
+	zerro_len = 0;
 	nbr = ft_get_next_argument_int(argptr);
 	len_nbr = ft_strlen(ft_itoa(nbr));
 	if (nbr < 0)
@@ -67,10 +68,11 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 		len_nbr -= 1;
 		nbr_minus = 1;
 	}
-	zerro_len = zero(attr, len_nbr);
+	if (attr->minus != 1)
+		zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
 		attr->space_len += attr->width - len_nbr - zerro_len;
-	if (nbr_minus && attr->zero && attr->precision == -1)
+	if (nbr_minus && attr->zero && !attr->minus && attr->precision == -1)
 		zerro_len -= 1;
 	else if (nbr_minus)
 		attr->space_len -= 1;

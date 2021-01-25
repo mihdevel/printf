@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/23 01:34:27 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/25 14:46:47 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int				ft_parser(t_attr *struc_attr, char *format, va_list argptr)
 			struc_attr->minus = 1;
 		if (format[i] == '0' && !ft_isdigit(format[i - 1]) && format[i - 1] != '.')
 			struc_attr->zero = 1;
-		if ((format[i] == '*' || ft_isdigit(format[i])) && format[i - 1] != '.')
+		if ((format[i] == '*' || ft_isdigit(format[i])) && !ft_strnstr(format , "." , i))
 			struc_attr->width = ft_get_width(format + i, struc_attr, argptr);
 		if (format[i] == '.' && !ft_isdigit(format[i + 1]))
 			struc_attr->precision = 0;

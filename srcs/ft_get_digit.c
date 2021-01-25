@@ -19,6 +19,7 @@ int			ft_get_digit(char *format, va_list argptr)
 	char	*digit;
 	int		len;
 
+	result = 0;
 	start = format;
 	if (*format == '*')
 		return (ft_get_next_argument_int(argptr));
