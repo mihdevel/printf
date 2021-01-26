@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/24 19:30:06 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 10:37:58 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,47 @@ int				ft_abs_lg(int nb)
 	return (nb);
 }
 
-char			*ft_itoa_base_lg(unsigned long long value, int base)
+unsigned int	ft_numlen(long value, int base)
 {
-	char		*str;
-	int			size;
-	char		*tab;
-	int			flag;
-	unsigned long long		tmp;
+	int	size;
 
-	flag = 0;
-	size = 0;
-	tab = "0123456789abcdef";
-	if (base < 2 || base > 16)
-		return (0);
-	if (value < 0 && base == 10)
-		flag = 1;
-	tmp = value;
-	while (tmp /= base)
+	size = 1;
+	if (base != 10 && value < 0)
+		value = -value;
+	if (value < 0)
 		size++;
-	size = size + flag + 1;
-	str = (char *)malloc(sizeof(char) * size  + 1);
-	str[size] = '\0';
-	if (flag == 1)
-		str[0] = '-';
-	while (size > flag)
+	while (value / base)
 	{
-		str[size - 1] = tab[ft_abs_lg(value % base)];
-		size--;
+		size++;
 		value /= base;
 	}
-	return (str);
+	return (size);
+}
+
+char	*ft_itoa_base_lg(unsigned long long value, int base)
+{
+	unsigned long long				size;
+	unsigned long long 			nbr;
+	char			*result;
+	char			*ref_base;
+
+	nbr = value;
+	ref_base = "0123456789abcdef";
+	if (base < 2 || base > 16)
+		return (NULL);
+	size = ft_numlen(nbr, base);
+	if (!(result = (char*)malloc(sizeof(*result) * (size + 1))))
+		return (NULL);
+	result[size--] = '\0';
+	result[0] = (value < 0 ? '-' : '0');
+	if (value < 0)
+		nbr = -nbr;
+	while (nbr > 0)
+	{
+		result[size--] = ref_base[nbr % base];
+		nbr /= base;
+	}
+	return (result);
 }
 
 static char		ft_get_addition_char(t_attr *attr, int len)

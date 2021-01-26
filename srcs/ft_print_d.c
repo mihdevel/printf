@@ -68,7 +68,7 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 		len_nbr -= 1;
 		nbr_minus = 1;
 	}
-	if (attr->minus != 1)
+	if (attr->minus != 1 || attr->precision > 0)
 		zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
 		attr->space_len += attr->width - len_nbr - zerro_len;
