@@ -34,7 +34,6 @@ static	char		*ft_reverse(char *str, int len)
 	char			c;
 
 	i = 0;
-	c = 0;
 	while (len >= i)
 	{
 		c = str[i];
@@ -56,7 +55,7 @@ static	int			counter(int n)
 	return (len);
 }
 
-static char				*ft_itoa_u(unsigned int n)
+static char			*ft_itoa_u(unsigned int n)
 {
 	int				n2;
 	int				len;
@@ -85,27 +84,17 @@ static char				*ft_itoa_u(unsigned int n)
 	return (str);
 }
 
-static int			ft_print_chars(char c, int len)
-{
-	int				count;
-
-	count = len;
-	while (len-- > 0)
-		ft_putchar(c);
-	return (count);
-}
-
-static int		format_print_d(t_attr *attr, int zerro_len, unsigned int nbr)
+static int			format_print_d(t_attr *attr, int zerro_len, unsigned int nbr)
 {
 	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
 		attr->space_len += 1;
 	if (attr->minus == 0)
-		ft_print_chars(' ', attr->space_len);
-	ft_print_chars('0', zerro_len);
+		ft_print_chars(' ', attr->space_len, attr);
+	ft_print_chars('0', zerro_len, attr);
 	if (attr->precision != 0)
 		ft_putnbr_u(nbr);
 	if (attr->minus == 1)
-		ft_print_chars(' ', attr->space_len);
+		ft_print_chars(' ', attr->space_len, attr);
 	return (0);
 }
 

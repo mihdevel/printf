@@ -6,13 +6,13 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 10:56:02 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:39:52 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	ft_nbrlen(unsigned long long n, int base)
+static int		ft_nbrlen(unsigned long long n, int base)
 {
 	if (n == 0)
 		return (1);
@@ -24,8 +24,8 @@ static int	ft_nbrlen(unsigned long long n, int base)
 
 static char		*ft_itoa_base_p(unsigned long long nbr, int base)
 {
-	char	*str;
-	size_t	len;
+	char		*str;
+	size_t		len;
 
 	len = ft_nbrlen(nbr, base);
 	if (!(str = (char*)malloc(sizeof(str) * (len + 1))))
@@ -50,16 +50,6 @@ static char		ft_get_addition_char(t_attr *attr, int len)
 		return (' ');
 }
 
-static int		ft_print_spaces_or_nulls(char c, int len)
-{
-	int			count;
-
-	count = len;
-	while (len-- > 0)
-		ft_putchar(c);
-	return (count);
-}
-
 int				ft_print_p(t_attr *attr, va_list argptr)
 {
 	char		*str;
@@ -77,14 +67,14 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 		addition_len = len < attr->precision ? attr->width - len - 2 :
 			attr->width - attr->precision - 2;
 	if (attr->minus == 0)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len);
-	count += ft_putstr("0x");
+		ft_print_chars(addition_char, addition_len, attr);
+	attr->count +=  ft_putstr("0x");
 	while (attr->precision > 0)
 	{
-		count += ft_putchar(*(str)++);
+		attr->count += ft_putchar(*(str)++);
 		attr->precision--;
 	}
 	if (attr->minus == 1)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len);
+		ft_print_chars(addition_char, addition_len, attr);
 	return (count);
 }

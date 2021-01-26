@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 21:44:55 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/24 11:30:41 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:39:52 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,6 @@ static char		ft_get_addition_char(t_attr *attr, int len)
 		return ('0');
 	else
 		return (' ');
-}
-
-//static int		ft_get_addition_len(t_attr *attr, int len)
-//{
-//	if (len < attr->precision)
-//		return (attr->width - len);
-//	else
-//		return (attr->width - attr->precision);
-//}
-
-static int		ft_print_spaces_or_nulls(char c, int len)
-{
-	int		count;
-
-	count = len;
-	while (len-- > 0)
-		ft_putchar(c);
-	return (count);
 }
 
 int				ft_print_s(t_attr *attr, va_list argptr)
@@ -61,13 +43,13 @@ int				ft_print_s(t_attr *attr, va_list argptr)
 		addition_len = len < attr->precision ? attr->width - len :
 					   attr->width - attr->precision;
 	if (attr->minus == 0)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len);
+		ft_print_chars(addition_char, addition_len, attr);
 	while (attr->precision > 0)
 	{
-		count += ft_putchar(*(str)++);
+		attr->count += ft_putchar(*(str)++);
 		attr->precision--;
 	}
 	if (attr->minus == 1)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len);
+		ft_print_chars(addition_char, addition_len, attr);
 	return (count);
 }

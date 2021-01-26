@@ -27,3 +27,9 @@ int			ft_get_next_argument_int(va_list argptr)
 	arg = va_arg(argptr, int);
 	return (arg);
 }
+
+void			ft_print_chars(char c, int len, t_attr *attr)
+{
+	while (len-- > 0)
+		attr->count += ft_putchar(c);
+}

@@ -6,59 +6,39 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 10:40:05 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/25 11:37:06 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:07:32 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int				ft_abs_lg(int nb)
+static int		ft_nbrlen(unsigned int n, int base)
 {
-	if (nb < 0)
-		nb = -nb;
-	return (nb);
+	if (n == 0)
+		return (1);
+	else if (n / base > 0)
+		return (1 + ft_nbrlen(n / base, base));
+	else
+		return (1);
 }
 
-static char			*ft_itoa_base_lg(unsigned int value, int base)
+static char		*ft_itoa_base_x(unsigned int nbr, int base, int type)
 {
 	char		*str;
-	int			size;
-	char		*tab;
-	int			flag;
-	unsigned int	tmp;
+	size_t		len;
 
-	flag = 0;
-	size = 0;
-	tab = "0123456789abcdef";
-	if (base < 2 || base > 16)
-		return (0);
-	if (value < 0 && base == 10)
-		flag = 1;
-	tmp = value;
-	while (tmp /= base)
-		size++;
-	size = size + flag + 1;
-	str = (char *)malloc(sizeof(char) * size  + 1);
-	str[size] = '\0';
-	if (flag == 1)
-		str[0] = '-';
-	while (size > flag)
+	len = ft_nbrlen(nbr, base);
+	if (!(str = (char*)malloc(sizeof(str) * (len + 1))))
+		return (NULL);
+	while (len-- > 0)
 	{
-		str[size - 1] = tab[ft_abs_lg(value % base)];
-		size--;
-		value /= base;
+		if (type == 'x')
+			*(str + len) = (nbr % base) + ((nbr % base > 9) ? 'a' - 10 : '0');
+		else if (type == 'X')
+			*(str + len) = (nbr % base) + ((nbr % base > 9) ? 'A' - 10 : '0');
+		nbr /= base;
 	}
 	return (str);
-}
-
-static int		ft_print_chars(char c, int len)
-{
-	int		count;
-
-	count = len;
-	while (len-- > 0)
-		ft_putchar(c);
-	return (count);
 }
 
 static int		zero(t_attr *attr, int len_nbr)
@@ -80,7 +60,7 @@ int				ft_print_x(t_attr *attr, va_list argptr)
 	int			zerro_len;
 
 	attr->space_len = 0;
-	str = ft_itoa_base_lg(va_arg(argptr, unsigned int), 16);
+	str = ft_itoa_base_x(va_arg(argptr, unsigned int), 16, attr->type);
 	len_nbr = ft_strlen(str);
 	zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
@@ -88,12 +68,12 @@ int				ft_print_x(t_attr *attr, va_list argptr)
 	if (attr->precision == 0 && *str == '0' && attr->space_len != 0)
 		attr->space_len += 1;
 	if (attr->minus == 0)
-		ft_print_chars(' ', attr->space_len);
-	ft_print_chars('0', zerro_len);
+		ft_print_chars(' ', attr->space_len, attr);
+	ft_print_chars('0', zerro_len, attr);
 	if (attr->precision != 0)
 		while (len_nbr-- > 0)
 			ft_putchar(*str++);
 	if (attr->minus == 1)
-		ft_print_chars(' ', attr->space_len);
+		ft_print_chars(' ', attr->space_len, attr);
 	return (0);
 }

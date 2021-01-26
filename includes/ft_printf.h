@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:09:01 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/25 14:30:35 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:45:24 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ typedef struct		s_attr
 	int				precision;
 	char			type;
 	int				space_len;
+	int				count;
 }					t_attr;
 
 int					ft_printf(const char *format, ...);
-int					ft_parser(t_attr *struc_attr, char *format, va_list argptr);
+int					ft_parser(t_attr *attr, char *format, va_list argptr);
 int					ft_printer(t_attr *attr, va_list argptr);
 int					ft_get_width(char *format, t_attr *struc_attr, va_list argptr);
 int					ft_get_digit(char *format, va_list attr);
 char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
+void				ft_print_chars(char c, int len, t_attr *attr);
 int					ft_print_s(t_attr *attr, va_list argptr);
 int					ft_print_c(t_attr *attr, va_list argptr);
 int					ft_print_percent(t_attr *attr);

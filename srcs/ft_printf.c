@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:08:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/11 19:17:44 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:10:17 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 int				ft_printf(const char *format, ...)
 {
-	t_attr		struc_attr;
+	t_attr		attr;
 	va_list		argptr;
-	int			count;
 	int			i;
 
-	count = 0;
+	attr.count = 0;
 	va_start(argptr, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			i = ft_parser(&struc_attr, (char *)format, argptr);
-			count += ft_printer(&struc_attr, argptr);
+			i = ft_parser(&attr, (char *)format, argptr);
+			ft_printer(&attr, argptr);
 			format += i;
 		}
 		else
-			count += ft_putchar(*format);
+			attr.count += ft_putchar(*format);
 		format++;
 	}
 	va_end(argptr);
-	return (count);
+	return (attr.count);
 }

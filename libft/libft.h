@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:31:31 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/19 15:25:06 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:20:51 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
-void		ft_putnbr_fd(int n, int fd);
+int			ft_putnbr_fd(int n, int fd);
 int			ft_putchar(char c);
 int			ft_putstr(char *str);
 char		*ft_itoa_base(int value, int base);

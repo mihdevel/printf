@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 11:31:41 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/22 14:36:02 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:39:52 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,9 @@ static char		ft_get_addition_char(t_attr *attr)
 		return (' ');
 }
 
-static int		ft_print_spaces_or_nulls(char c, int len)
-{
-	int		count;
-
-	count = len;
-	while (len-- > 0)
-		ft_putchar(c);
-	return (count);
-}
-
 int				ft_print_c(t_attr *attr, va_list argptr)
 {
-	int		c;
+	int			c;
 	char		addition_char;
 	int			addition_len;
 	int			count;
@@ -46,9 +36,9 @@ int				ft_print_c(t_attr *attr, va_list argptr)
 	if (attr->width > 1)
 		addition_len = attr->width - 1;
 	if (attr->minus == 0)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len);
-	count += ft_putchar(c);
+		ft_print_chars(addition_char, addition_len, attr);
+	attr->count += ft_putchar(c);
 	if (attr->minus == 1)
-		count += ft_print_spaces_or_nulls(addition_char, addition_len);
+		ft_print_chars(addition_char, addition_len, attr);
 	return (count);
 }

@@ -6,35 +6,25 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/25 12:10:49 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 12:20:51 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-static int		ft_print_chars(char c, int len)
-{
-	int		count;
-
-	count = len;
-	while (len-- > 0)
-		ft_putchar(c);
-	return (count);
-}
 
 static int		format_print_d(t_attr *attr, int zerro_len, int nbr, int minus)
 {
 	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
 		attr->space_len += 1;
 	if (attr->minus == 0)
-		ft_print_chars(' ', attr->space_len);
+		ft_print_chars(' ', attr->space_len, attr);
 	if (minus)
-		ft_print_chars('-', 1);
-	ft_print_chars('0', zerro_len);
+		ft_print_chars('-', 1, attr);
+	ft_print_chars('0', zerro_len, attr);
 	if (attr->precision != 0)
-		ft_putnbr_fd(nbr, 1);
+		attr ->count += ft_putnbr_fd(nbr, 1);
 	if (attr->minus == 1)
-		ft_print_chars(' ', attr->space_len);
+		ft_print_chars(' ', attr->space_len, attr);
 	return (0);
 }
 
