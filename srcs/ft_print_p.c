@@ -6,60 +6,36 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 10:37:58 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 10:56:02 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				ft_abs_lg(int nb)
+static int	ft_nbrlen(unsigned long long n, int base)
 {
-	if (nb < 0)
-		nb = -nb;
-	return (nb);
+	if (n == 0)
+		return (1);
+	else if (n / base > 0)
+		return (1 + ft_nbrlen(n / base, base));
+	else
+		return (1);
 }
 
-unsigned int	ft_numlen(long value, int base)
+static char		*ft_itoa_base_p(unsigned long long nbr, int base)
 {
-	int	size;
+	char	*str;
+	size_t	len;
 
-	size = 1;
-	if (base != 10 && value < 0)
-		value = -value;
-	if (value < 0)
-		size++;
-	while (value / base)
-	{
-		size++;
-		value /= base;
-	}
-	return (size);
-}
-
-char	*ft_itoa_base_lg(unsigned long long value, int base)
-{
-	unsigned long long				size;
-	unsigned long long 			nbr;
-	char			*result;
-	char			*ref_base;
-
-	nbr = value;
-	ref_base = "0123456789abcdef";
-	if (base < 2 || base > 16)
+	len = ft_nbrlen(nbr, base);
+	if (!(str = (char*)malloc(sizeof(str) * (len + 1))))
 		return (NULL);
-	size = ft_numlen(nbr, base);
-	if (!(result = (char*)malloc(sizeof(*result) * (size + 1))))
-		return (NULL);
-	result[size--] = '\0';
-	result[0] = (value < 0 ? '-' : '0');
-	if (value < 0)
-		nbr = -nbr;
-	while (nbr > 0)
+	while (len-- > 0)
 	{
-		result[size--] = ref_base[nbr % base];
+		*(str + len) = (nbr % base) + ((nbr % base > 9) ? 'a' - 10 : '0');
 		nbr /= base;
 	}
-	return (result);
+	return (str);
 }
 
 static char		ft_get_addition_char(t_attr *attr, int len)
@@ -94,7 +70,7 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 
 	count = 0;
 	addition_len = 0;
-	str = ft_itoa_base_lg((unsigned long long)va_arg(argptr, void *), 16);
+	str = ft_itoa_base_p((unsigned long long)va_arg(argptr, void *), 16);
 	len = ft_strlen(str);
 	addition_char = ft_get_addition_char(attr, len);
 	if (attr->width > attr->precision)
