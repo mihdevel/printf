@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/24 14:40:06 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 13:43:52 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static int			format_print_d(t_attr *attr, int zerro_len, unsigned int nbr)
 	if (attr->minus == 0)
 		ft_print_chars(' ', attr->space_len, attr);
 	ft_print_chars('0', zerro_len, attr);
-	if (attr->precision != 0)
+	if (!(attr->precision == 0 && nbr == 0))
 		ft_putnbr_u(nbr);
 	if (attr->minus == 1)
 		ft_print_chars(' ', attr->space_len, attr);
@@ -122,6 +122,7 @@ int					ft_print_u(t_attr *attr, va_list argptr)
 	zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
 		attr->space_len += attr->width - len_nbr - zerro_len;
-	attr->count += len_nbr;
+	if (!(attr->precision == 0 && nbr == 0))
+		attr->count += len_nbr;
 	return (format_print_d(attr, zerro_len, nbr));
 }

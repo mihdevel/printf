@@ -5,4 +5,5 @@
 CMakeLists.txt
 cmake-build-debug
 .idea
-./pft/results.txt
+pft/
+pft_2019/

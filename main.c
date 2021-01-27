@@ -307,20 +307,22 @@ int	main()
 
 
 
+//	int		a = -4;
+//
 //	char	c = 'a';
+//	int		d = 2147483647;
+//	int		e = -2147483648;
 //
 //	int		i = 8;
 //	int		j = -12;
 //	int		k = 123456789;
 //	int		l = 0;
 //	int		m = -12345678;
-//	char	*n = "abcdefghijklmnop";
 
 
 
-	printf(" - %d|\n", printf("%x", 0));
-	printf(" - %d|\n", ft_printf("%x", 0));
-//	8, -12, 123456789, 0, -12345678, abcdefghijklmnop, a, 97, 4294967284, fffffff4, FFFFFFF4
+	printf(" - %d|\n", printf("|%1.0x|", 0));
+	printf(" - %d|\n", ft_printf("|%1.0x|", 0));
 
 	return(0);
 }

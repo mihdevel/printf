@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 11:11:36 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 14:18:06 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int				ft_parser(t_attr *attr, char *format, va_list argptr)
 	int			i;
 
 	i = 0;
-	// TODO Баг при width = 0 и "|%.2s|"
 	ft_init_struct(attr);
 	while (!ft_strchr(SPECIFICATORS, format[i]))
 	{
@@ -41,7 +40,7 @@ int				ft_parser(t_attr *attr, char *format, va_list argptr)
 			attr->precision = ft_get_digit(format + i, argptr);
 		i++;
 	}
-	if (attr->precision < 0)
+	if (attr->precision < -1)
 		attr->precision = -1;
 	attr->type = format[i];
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 11:45:35 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 13:40:44 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static char		*ft_itoa_base_p(unsigned long long nbr, int base)
 	len = ft_nbrlen(nbr, base);
 	if (!(str = (char*)malloc(sizeof(str) * (len + 1))))
 		return (NULL);
+	str[len] = '\0';
 	while (len-- > 0)
 	{
 		*(str + len) = (nbr % base) + ((nbr % base > 9) ? 'a' - 10 : '0');
@@ -42,8 +43,6 @@ static char		*ft_itoa_base_p(unsigned long long nbr, int base)
 
 static char		ft_get_addition_char(t_attr *attr)
 {
-//	if (attr->precision == -1 || attr->precision > len)
-//		attr->precision = len;
 	if (attr->minus == 1 || (!attr->minus && !attr->zero))
 		return (' ');
 	else if (attr->zero == 1)
@@ -63,8 +62,9 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 	len = ft_strlen(str);
 	addition_char = ft_get_addition_char(attr);
 	if (attr->width > attr->precision)
-		attr->space_len = len < attr->precision ? attr->width - len - 2 :
-			attr->width - attr->precision - 2;
+		attr->space_len = attr->width - len - 2;
+	if (attr->precision == -1 && !str)
+		attr->space_len--;
 	if (attr->minus == 0)
 		ft_print_chars(addition_char, attr->space_len, attr);
 	attr->count +=  ft_putstr("0x");

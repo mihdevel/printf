@@ -20,6 +20,7 @@ static int		ft_get_next_argument_with(t_attr *attr, va_list argptr)
 	if (nbr < 0)
 	{
 		attr->minus = 1;
+		attr->zero = 0;
 		return (nbr * -1);
 	}
 	else
