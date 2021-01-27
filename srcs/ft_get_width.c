@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:59:54 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/11 19:12:44 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:49:25 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ static int		ft_get_next_argument_with(t_attr *attr, va_list argptr)
 		return (nbr);
 }
 
-int				ft_get_width(char *format, t_attr *struc_attr, va_list argptr)
+int				ft_get_width(char *format, t_attr *attr, va_list argptr)
 {
 	int			result;
 	char		*start;
 	char		*digit;
 	int			len;
 
-	if (struc_attr->width != -1 || format[0] == '0')
-		return (struc_attr->width);
+	if (attr->width != -1 || format[0] == '0')
+		return (attr->width);
 	if (*format == '*')
-		return (ft_get_next_argument_with(struc_attr, argptr));
+		return (ft_get_next_argument_with(attr, argptr));
 	start = format;
 	format++;
 	while (ft_isdigit(*format))

@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:09:01 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 12:45:24 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:44:27 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_attr
 int					ft_printf(const char *format, ...);
 int					ft_parser(t_attr *attr, char *format, va_list argptr);
 int					ft_printer(t_attr *attr, va_list argptr);
-int					ft_get_width(char *format, t_attr *struc_attr, va_list argptr);
+int					ft_get_width(char *format, t_attr *attr, va_list argptr);
 int					ft_get_digit(char *format, va_list attr);
 char				*ft_get_next_argument_char(va_list argptr);
 int					ft_get_next_argument_int(va_list argptr);
