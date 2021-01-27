@@ -27,9 +27,7 @@ int				ft_print_c(t_attr *attr, va_list argptr)
 	int			c;
 	char		addition_char;
 	int			addition_len;
-	int			count;
 
-	count = 0;
 	addition_len = 0;
 	c = va_arg(argptr, int);
 	addition_char = ft_get_addition_char(attr);
@@ -40,5 +38,5 @@ int				ft_print_c(t_attr *attr, va_list argptr)
 	attr->count += ft_putchar(c);
 	if (attr->minus == 1)
 		ft_print_chars(addition_char, addition_len, attr);
-	return (count);
+	return (0);
 }

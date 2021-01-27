@@ -18,7 +18,6 @@ static	char	*ft_reverse(char *str, int len)
 	char	c;
 
 	i = 0;
-	c = 0;
 	while (len >= i)
 	{
 		c = str[i];
@@ -51,10 +50,9 @@ char			*ft_itoa(long n)
 	nbr = (n < 0) ? (unsigned int)n * -1 : n;
 	n2 = (n < 0) ? 1 : 0;
 	len = (n < 0) ? len + 1 : len;
-	str = (char *)malloc(len + 1);
+	if (!(str = (char *)malloc(len + 1)))
+		return (NULL);
 	len = 0;
-	if (str == NULL)
-		return (str);
 	if (n == 0)
 		str[len++] = '0';
 	while (nbr)
@@ -65,6 +63,5 @@ char			*ft_itoa(long n)
 	if (n2)
 		str[len++] = '-';
 	str[len] = '\0';
-	str = ft_reverse(str, len - 1);
-	return (str);
+	return (ft_reverse(str, len - 1));
 }

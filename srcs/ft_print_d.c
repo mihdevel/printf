@@ -6,21 +6,20 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 10:42:18 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:50:51 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-//void			ft_kostyl(t_attr attr)
-//{
-//
-//}
-
-static int		format_print_d(t_attr *attr, int zerro_len, int nbr, int minus)
+void			ft_print_chars(char c, int len, t_attr *attr)
 {
-//	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
-//		attr->space_len += 1;
+	while (len-- > 0)
+		attr->count += ft_putchar(c);
+}
+
+static int		format_print_d(t_attr *attr, int zerro_len, long nbr, int minus)
+{
 	if (attr->minus == 0)
 		ft_print_chars(' ', attr->space_len, attr);
 	if (minus)
@@ -51,6 +50,7 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 	int			len_nbr;
 	int			zerro_len;
 	int			nbr_minus;
+	char		*str;
 
 	attr->space_len = 0;
 	nbr_minus = 0;
@@ -62,8 +62,10 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 		nbr = -nbr;
 		nbr_minus = 1;
 	}
+	if (!(str = ft_itoa(nbr)))
+		return (-1);
 	if (!(nbr == 0 && attr->precision == 0))
-		len_nbr = ft_strlen(ft_itoa(nbr));
+		len_nbr = ft_strlen(str);
 	if (attr->minus != 1 || attr->precision > 0)
 		zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
@@ -73,5 +75,6 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 	else if (nbr_minus)
 		attr->space_len -= 1;
 	attr->count += len_nbr;
+	free(str);
 	return (format_print_d(attr, zerro_len, nbr, nbr_minus));
 }

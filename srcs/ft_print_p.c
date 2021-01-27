@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 13:40:44 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:29:05 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 	char		*str;
 	int			len;
 	char		addition_char;
+	char		*start_str;
 
 	attr->space_len = 0;
 	str = ft_itoa_base_p((unsigned long long)va_arg(argptr, void *), 16);
+	start_str = str;
 	len = ft_strlen(str);
 	addition_char = ft_get_addition_char(attr);
 	if (attr->width > attr->precision)
@@ -67,12 +69,13 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 		attr->space_len--;
 	if (attr->minus == 0)
 		ft_print_chars(addition_char, attr->space_len, attr);
-	attr->count +=  ft_putstr("0x");
+	attr->count += ft_putstr("0x");
 	while (len-- > 0 || (str && *str))
 		attr->count += ft_putchar(*(str)++);
 	if (attr->precision == -1 && !str)
 		attr->count += ft_putchar('0');
 	if (attr->minus == 1)
 		ft_print_chars(addition_char, attr->space_len, attr);
+	free(start_str);
 	return (0);
 }

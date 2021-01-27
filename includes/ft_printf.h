@@ -43,5 +43,6 @@ int					ft_print_d(t_attr *attr, va_list argptr);
 int					ft_print_p(t_attr *attr, va_list argptr);
 int					ft_print_u(t_attr *attr, va_list argptr);
 int					ft_print_x(t_attr *attr, va_list argptr);
+char				*ft_itoa_u(unsigned int n);
 
 #endif
