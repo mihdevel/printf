@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 11:35:41 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 11:45:35 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static char		*ft_itoa_base_p(unsigned long long nbr, int base)
 	return (str);
 }
 
-static char		ft_get_addition_char(t_attr *attr, int len)
+static char		ft_get_addition_char(t_attr *attr)
 {
-	if (attr->precision == -1 || attr->precision > len)
-		attr->precision = len;
+//	if (attr->precision == -1 || attr->precision > len)
+//		attr->precision = len;
 	if (attr->minus == 1 || (!attr->minus && !attr->zero))
 		return (' ');
 	else if (attr->zero == 1)
@@ -57,28 +57,22 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 	char		*str;
 	int			len;
 	char		addition_char;
-	int			addition_len;
-	int			count;
 
-	count = 0;
-	addition_len = 0;
+	attr->space_len = 0;
 	str = ft_itoa_base_p((unsigned long long)va_arg(argptr, void *), 16);
 	len = ft_strlen(str);
-	addition_char = ft_get_addition_char(attr, len);
+	addition_char = ft_get_addition_char(attr);
 	if (attr->width > attr->precision)
-		addition_len = len < attr->precision ? attr->width - len - 2 :
+		attr->space_len = len < attr->precision ? attr->width - len - 2 :
 			attr->width - attr->precision - 2;
 	if (attr->minus == 0)
-		ft_print_chars(addition_char, addition_len, attr);
+		ft_print_chars(addition_char, attr->space_len, attr);
 	attr->count +=  ft_putstr("0x");
-	while (attr->precision > 0 || (str && *str))
-	{
+	while (len-- > 0 || (str && *str))
 		attr->count += ft_putchar(*(str)++);
-		attr->precision--;
-	}
-//	if (attr->precision == -1 && !str)
-//		attr->count += ft_putchar('0');
+	if (attr->precision == -1 && !str)
+		attr->count += ft_putchar('0');
 	if (attr->minus == 1)
-		ft_print_chars(addition_char, addition_len, attr);
-	return (count);
+		ft_print_chars(addition_char, attr->space_len, attr);
+	return (0);
 }

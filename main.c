@@ -318,9 +318,8 @@ int	main()
 
 
 
-//	TODO
-	printf(" - %d|\n", printf("%.p", NULL));
-	printf(" - %d|\n", ft_printf("%.p", NULL));
+	printf(" - %d|\n", printf("%x", 0));
+	printf(" - %d|\n", ft_printf("%x", 0));
 //	8, -12, 123456789, 0, -12345678, abcdefghijklmnop, a, 97, 4294967284, fffffff4, FFFFFFF4
 
 	return(0);
