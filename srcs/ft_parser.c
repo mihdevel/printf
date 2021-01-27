@@ -6,18 +6,19 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 16:37:22 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:55:26 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		ft_init_struct(t_attr *struc_attr)
+static void		ft_init_struct(t_attr *attr)
 {
-	struc_attr->zero = 0;
-	struc_attr->minus = 0;
-	struc_attr->width = -1;
-	struc_attr->precision = -1;
+	attr->zero = 0;
+	attr->minus = 0;
+	attr->width = -1;
+	attr->precision = -1;
+	attr->space_len = 0;
 }
 
 int				ft_parser(t_attr *attr, char *format, va_list argptr)

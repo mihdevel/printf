@@ -35,7 +35,6 @@ SRC = ft_memcpy.c\
     ft_putendl_fd.c\
     ft_memcmp.c\
     ft_putchar.c\
-    ft_itoa_base.c\
     ft_putstr.c
 
 OBJ = $(SRC:.c=.o)

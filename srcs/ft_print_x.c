@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 10:40:05 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 16:57:31 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:30:23 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int				ft_print_x(t_attr *attr, va_list argptr)
 	int			zerro_len;
 	char		*start_str;
 
-	attr->space_len = 0;
 	str = ft_itoa_base_x(va_arg(argptr, unsigned int), 16, attr->type);
 	start_str = str;
 	len_nbr = ft_strlen(str);

@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 16:44:27 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:31:14 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int					ft_print_u(t_attr *attr, va_list argptr)
 	int				zerro_len;
 	char			*str;
 
-	attr->space_len = 0;
 	nbr = va_arg(argptr, unsigned int);
 	if (!(str = ft_itoa_u(nbr)))
 		return (-1);

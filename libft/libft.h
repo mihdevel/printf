@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 16:31:31 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 12:39:52 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:24:41 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 int			ft_putchar(int c);
 int			ft_putstr(char *str);
-char		*ft_itoa_base(int value, int base);
 
 #endif
