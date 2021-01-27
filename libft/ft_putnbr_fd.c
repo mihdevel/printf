@@ -6,16 +6,17 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 17:45:03 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 12:39:52 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/26 14:56:36 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putnbr_fd(int nb, int fd)
+void		ft_putnbr_fd(int nb, int fd)
 {
 	char	mass[10];
 	int		i;
+	int		len;
 
 	if (nb < 0)
 	{
@@ -33,7 +34,7 @@ int		ft_putnbr_fd(int nb, int fd)
 		nb = nb / 10;
 	}
 	mass[i] = nb + '0';
+	len = i;
 	while (i >= 0)
 		ft_putchar_fd(mass[i--], fd);
-	return (i + 3);
 }

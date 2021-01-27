@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:47 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 12:39:52 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 11:35:41 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static char		*ft_itoa_base_p(unsigned long long nbr, int base)
 	char		*str;
 	size_t		len;
 
+	if (nbr == 0)
+		return (NULL);
 	len = ft_nbrlen(nbr, base);
 	if (!(str = (char*)malloc(sizeof(str) * (len + 1))))
 		return (NULL);
@@ -69,11 +71,13 @@ int				ft_print_p(t_attr *attr, va_list argptr)
 	if (attr->minus == 0)
 		ft_print_chars(addition_char, addition_len, attr);
 	attr->count +=  ft_putstr("0x");
-	while (attr->precision > 0)
+	while (attr->precision > 0 || (str && *str))
 	{
 		attr->count += ft_putchar(*(str)++);
 		attr->precision--;
 	}
+//	if (attr->precision == -1 && !str)
+//		attr->count += ft_putchar('0');
 	if (attr->minus == 1)
 		ft_print_chars(addition_char, addition_len, attr);
 	return (count);

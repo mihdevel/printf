@@ -6,7 +6,7 @@
 /*   By: meunostu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 13:13:19 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/25 14:46:47 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 11:11:36 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int				ft_parser(t_attr *attr, char *format, va_list argptr)
 			attr->precision = ft_get_digit(format + i, argptr);
 		i++;
 	}
+	if (attr->precision < 0)
+		attr->precision = -1;
 	attr->type = format[i];
 	return (i);
 }

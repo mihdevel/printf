@@ -122,5 +122,6 @@ int					ft_print_u(t_attr *attr, va_list argptr)
 	zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
 		attr->space_len += attr->width - len_nbr - zerro_len;
+	attr->count += len_nbr;
 	return (format_print_d(attr, zerro_len, nbr));
 }

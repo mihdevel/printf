@@ -6,23 +6,28 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/26 12:20:51 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 10:42:18 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
+//void			ft_kostyl(t_attr attr)
+//{
+//
+//}
+
 static int		format_print_d(t_attr *attr, int zerro_len, int nbr, int minus)
 {
-	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
-		attr->space_len += 1;
+//	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
+//		attr->space_len += 1;
 	if (attr->minus == 0)
 		ft_print_chars(' ', attr->space_len, attr);
 	if (minus)
 		ft_print_chars('-', 1, attr);
 	ft_print_chars('0', zerro_len, attr);
-	if (attr->precision != 0)
-		attr ->count += ft_putnbr_fd(nbr, 1);
+	if (!(attr->precision == 0 && nbr == 0))
+		ft_putnbr_fd(nbr, 1);
 	if (attr->minus == 1)
 		ft_print_chars(' ', attr->space_len, attr);
 	return (0);
@@ -42,7 +47,7 @@ static int		zero(t_attr *attr, int len_nbr)
 
 int				ft_print_d(t_attr *attr, va_list argptr)
 {
-	int			nbr;
+	long		nbr;
 	int			len_nbr;
 	int			zerro_len;
 	int			nbr_minus;
@@ -50,14 +55,15 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 	attr->space_len = 0;
 	nbr_minus = 0;
 	zerro_len = 0;
+	len_nbr = 0;
 	nbr = ft_get_next_argument_int(argptr);
-	len_nbr = ft_strlen(ft_itoa(nbr));
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		len_nbr -= 1;
 		nbr_minus = 1;
 	}
+	if (!(nbr == 0 && attr->precision == 0))
+		len_nbr = ft_strlen(ft_itoa(nbr));
 	if (attr->minus != 1 || attr->precision > 0)
 		zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
@@ -66,5 +72,6 @@ int				ft_print_d(t_attr *attr, va_list argptr)
 		zerro_len -= 1;
 	else if (nbr_minus)
 		attr->space_len -= 1;
+	attr->count += len_nbr;
 	return (format_print_d(attr, zerro_len, nbr, nbr_minus));
 }

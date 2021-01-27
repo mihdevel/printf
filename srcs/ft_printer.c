@@ -14,24 +14,21 @@
 
 int			ft_printer(t_attr *attr, va_list argptr)
 {
-	int		len;
-	
-	len = 0;
 	if (attr->type == 0)
 		return (-1);
 	else if (attr->type == 'd' || attr->type == 'i')
-		len = ft_print_d(attr, argptr);
+		ft_print_d(attr, argptr);
 	else if (attr->type == 'u')
-		len = ft_print_u(attr, argptr);
+		ft_print_u(attr, argptr);
 	else if (attr->type == 's')
-		len = ft_print_s(attr, argptr);
+		ft_print_s(attr, argptr);
 	else if (attr->type == 'c')
-		len = ft_print_c(attr, argptr);
+		ft_print_c(attr, argptr);
 	else if (attr->type == 'p')
-		len = ft_print_p(attr, argptr);
+		ft_print_p(attr, argptr);
 	else if (attr->type == 'x' || attr->type == 'X')
-		len = ft_print_x(attr, argptr);
+		ft_print_x(attr, argptr);
 	else if (attr->type == '%')
-		len = ft_print_percent(attr);
-	return (len);
+		ft_print_percent(attr);
+	return (0);
 }

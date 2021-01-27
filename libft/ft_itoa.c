@@ -30,7 +30,7 @@ static	char	*ft_reverse(char *str, int len)
 	return (str);
 }
 
-static	int		counter(int n)
+static	int		counter(long n)
 {
 	int len;
 
@@ -40,7 +40,7 @@ static	int		counter(int n)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long n)
 {
 	int				n2;
 	int				len;
