@@ -6,7 +6,7 @@
 /*   By: meunostu <meunostu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 20:03:06 by meunostu          #+#    #+#             */
-/*   Updated: 2021/01/27 13:43:52 by meunostu         ###   ########.fr       */
+/*   Updated: 2021/01/27 15:45:13 by meunostu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ static char			*ft_itoa_u(unsigned int n)
 
 static int			format_print_d(t_attr *attr, int zerro_len, unsigned int nbr)
 {
-	if (attr->precision == 0 && nbr == 0 && attr->space_len != 0)
-		attr->space_len += 1;
 	if (attr->minus == 0)
 		ft_print_chars(' ', attr->space_len, attr);
 	ft_print_chars('0', zerro_len, attr);
@@ -119,6 +117,8 @@ int					ft_print_u(t_attr *attr, va_list argptr)
 	attr->space_len = 0;
 	nbr = va_arg(argptr, unsigned int);
 	len_nbr = ft_strlen(ft_itoa_u(nbr));
+	if (nbr == 0 && attr->precision == 0)
+		len_nbr--;
 	zerro_len = zero(attr, len_nbr);
 	if (attr->width > len_nbr)
 		attr->space_len += attr->width - len_nbr - zerro_len;

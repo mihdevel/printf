@@ -321,8 +321,8 @@ int	main()
 
 
 
-	printf(" - %d|\n", printf("|%1.0x|", 0));
-	printf(" - %d|\n", ft_printf("|%1.0x|", 0));
+	printf(" - %d|\n", printf("|%-1.3u|", 0));
+	printf(" - %d|\n", ft_printf("|%-1.3u|", 0));
 
 	return(0);
 }
