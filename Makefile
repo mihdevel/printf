@@ -8,15 +8,15 @@ SRC_FILES = ft_printf.c ft_parser.c ft_printer.c\
 
 FLAGS = -Wall -Wextra -Werror -Iincludes/
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJ_FILES = $(addprefix $(SRC_DIR),$(SRC_FILES:.c=.o))
 CC= gcc $(FLAGS)
 
-all: $(NAME)
+all: $(NAME) $(OBJ_FILES)
 
-#.c.o:
-#	$(CC) -c $(SRC)
+%.o: %.c
+	$(CC) -c $< -o $@
 
-$(NAME):
+$(NAME): $(OBJ_FILES)
 	$(CC) -c $(SRC)
 	$(MAKE) -C libft
 	mv libft/libft.a ./$(NAME)
