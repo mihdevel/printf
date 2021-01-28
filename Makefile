@@ -11,13 +11,12 @@ SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(SRC_DIR),$(SRC_FILES:.c=.o))
 CC= gcc $(FLAGS)
 
-all: $(NAME) $(OBJ_FILES)
+all: $(NAME)
 
 %.o: %.c
 	$(CC) -c $< -o $@
 
 $(NAME): $(OBJ_FILES)
-	$(CC) -c $(SRC)
 	$(MAKE) -C libft
 	mv libft/libft.a ./$(NAME)
 	ar rc $(NAME) $(OBJ_FILES)
